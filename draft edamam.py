@@ -21,10 +21,9 @@ import json
 # OUR_APP_KEY = creds['YOUR_APP_KEY']
 
 # alternatively input ID and KEY value on each run
-# YOUR_APP_ID = input("Input your application id: ")
-# YOUR_APP_KEY = input("Input your application key: ")
-YOUR_APP_ID =  "5446a042",
-YOUR_APP_KEY = "826bc2a28830209720c2880ac23af298",
+YOUR_APP_ID = input("Input your application id: ")
+YOUR_APP_KEY = input("Input your application key: ")
+
 
 # Prompt user to input ingredients (one or more) separated by comma
 INGREDIENTS = input("Input one or multiple ingredients, separated by a comma:")
@@ -56,9 +55,10 @@ import pandas as pd
 # function that returns recipes
 def get_recipes(ingredients, start=0, end=10):
 
+    # add app_id and app_key
     params = {"q": INGREDIENTS,
-              "app_id": "5446a042",
-              "app_key": "826bc2a28830209720c2880ac23af298",
+              # "app_id": "",
+              # "app_key": "",
               "from": start,
               "to": end
               }
