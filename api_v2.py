@@ -16,13 +16,13 @@ with open(fpath) as user_file:
 YOUR_APP_ID = creds['YOUR_APP_ID']
 YOUR_APP_KEY = creds['YOUR_APP_KEY']
 
-# # # Prompt user to input ingredients (one or more) separated by comma
-# INGREDIENTS = input("Input one or multiple ingredients, separated by a comma:")
+# # Prompt user to input ingredients (one or more) separated by comma
+INGREDIENTS = input("Input one or multiple ingredients, separated by a comma:")
 
-# # Parse the input to list
-# INGREDIENTS = [ingredient.strip() for ingredient in INGREDIENTS.split(",")]
-# print(INGREDIENTS)
-INGREDIENTS = "strawberry, chocolate"
+# Parse the input to list
+INGREDIENTS = [ingredient.strip() for ingredient in INGREDIENTS.split(",")]
+print(INGREDIENTS)
+# INGREDIENTS = "strawberry, chocolate"
 
 url = "https://api.edamam.com/api/recipes/v2/"   
 
@@ -43,18 +43,18 @@ def get_recipes(ingredients, url=url):
     recipes = response['hits']
     count = response['count']
     recipes = [recipes[i]['recipe'] for i in range(len(recipes))]
-    # print(recipes[0].keys())
     return recipes, url_next, count
 
 
 def get_all_recipes(ingredients):
+    # get all recipes
     all_recipes, next_url, count = get_recipes(ingredients)
     try:
         while next_url:
+            # delay to ensure within API limit
             time.sleep(6)
             new_batch, next_url,count = get_recipes(ingredients, url = next_url)
-            all_recipes += new_batch
-            
+            all_recipes += new_batch     
     except:
         pass
     print(f"Total matches in database: {count}")
