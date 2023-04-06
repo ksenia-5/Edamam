@@ -27,15 +27,16 @@ print(INGREDIENTS)
  
 # function that returns recipes
 def get_recipes(ingredients, start = 0, end = 10):
-    # url  = f"https://api.edamam.com/search?q={ingredients}&app_id={YOUR_APP_ID}&app_key={YOUR_APP_KEY}&from={start}&to={end}"
-    params = {"q": INGREDIENTS,
-              "app_id": YOUR_APP_ID,
-              "app_key": YOUR_APP_KEY,
-              "from": start,
-              "to": end
-              }
-    url  = "https://api.edamam.com/search"
-    response = requests.get(url, params=params)
+    url  = f"https://api.edamam.com/search?q={ingredients}&app_id={YOUR_APP_ID}&app_key={YOUR_APP_KEY}&from={start}&to={end}"
+    # params = {"q": ingredients,
+    #           "app_id": YOUR_APP_ID,
+    #           "app_key": YOUR_APP_KEY,
+    #           "from": start,
+    #           "to": end
+    #           }
+    # url  = "https://api.edamam.com/search"
+    response = requests.get(url)
+    # response = requests.get(url, params=params)
     response = response.json()
 
     try:
@@ -105,6 +106,5 @@ for recipe in all_recipes:
         for ingredient in recipe['ingredientLines']:
             print(ingredient)
         
-# label, cooking time, ingredients, instructions and image
-
 # write response to file and save
+# label, cooking time, ingredients, instructions and image
