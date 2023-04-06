@@ -91,6 +91,7 @@ recipes_sorted = recipe_df.sort_values(sort_dict[sort_by])
 
 # present top three, numbered 1,2,3
 print(recipes_sorted)
+print(f"Retrieved {len(recipes_sorted)} recipes")
 
 # user chooses recipe to print by inputing value
 recipe_id = int(input("Enter the number of recipe you wish to print:\n"))
